@@ -31,6 +31,8 @@ while True:
     1   Download Novel Chapters
     2   Open Novel
     3   Rebuild Novel
+
+    Type any key to quit ...
     ''')
     action = input("Enter Action Number: ")
 
@@ -62,4 +64,4 @@ while True:
             print('** Chapter ', chapter, ' Rebuilt')
         print('\n********* Rebuild Done Successfully *********')
     else:
-        pass
+        break

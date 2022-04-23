@@ -51,12 +51,15 @@ def downloadNovels(website:str, name:str, chapters:tuple):
             except:
                 err.append(i)
 
-            if (err != []):
-                print('\n\n\nError with Loading Chapters' + err)
-            else:
-                print('\n********* Fetching Done Successfully *********')
-            
-            driver.quit()
+        if (err != []):
+            print('\n\n\nError with Loading Chapters: ')
+            for i in err:
+                print(i, end=' ')
+            print()
+        else:
+            print('\n********* Fetching Done Successfully *********')
+        
+        driver.quit()
 
 # try:
 #     messages=[]
