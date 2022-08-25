@@ -1,28 +1,25 @@
-from click import getchar
 from seleniumscript import *
 from htmlRender import *
+
 
 def inputNovelName():
     message = '\n    ========== Novels ==========\n'
     novels = getNovelsNames()
     for i in range(len(novels)):
-        message += '    %s   %s\n' %(i, novels[i])
+        message += '    %s   %s\n' % (i, novels[i])
     print(message)
-    
+
     return novels[int(input("Enter Novel Number: "))]
+
 
 def inputChapterNumeber():
     message = '\n    ========== Chapters ==========\n'
     chapters = getNovelChapters(novel_name)
     for chapter in chapters:
-        message += '    %s' %(chapter)
+        message += '    %s' % (chapter)
     print(message)
 
     return input("Enter Chapter Number: ")
-
-
-
-
 
 
 while True:
@@ -36,18 +33,20 @@ while True:
     ''')
     action = input("Enter Action Number: ")
 
-    if action == '1': 
+    if action == '1':
         # ====== Download Novel Chapters ======
         params = ['kolnovel']
         if (input('is novel exist? y/n:') == 'y'):
             novel = inputNovelName()
         else:
             novel = input("Enter Novel Name: ")
-        
+
         params.append(novel)
-        chapter_start = int(input("Enter Novel Start Chapter: "))
-        chapter_end = int(input("Enter Novel Start Chapter: "))
-        params.append((chapter_start, chapter_end+1))
+        chapter_start_url = input("Enter Novel Start Chapter URL: ")
+        params.append(chapter_start_url)
+        chapter_end = int(
+            input("How many chapters would you want to download?: "))
+        params.append(chapter_end)
         downloadNovels(*params)
     elif action == '2':
         # ====== Open Novel ======
