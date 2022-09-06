@@ -1,5 +1,17 @@
 from seleniumscript import *
 from htmlRender import *
+from Novels_backend import *
+
+sites = ['kolnovel', 'novel4up', 'arnovel']
+
+
+def inputSiteName():
+    message = '\n    ========== Sites ==========\n'
+    for i in range(len(sites)):
+        message += '    %s   %s\n' % (i, sites[i])
+    print(message)
+
+    return sites[int(input("Enter Site Number: "))]
 
 
 def inputNovelName():
@@ -34,8 +46,10 @@ while True:
     action = input("Enter Action Number: ")
 
     if action == '1':
+        params = []
         # ====== Download Novel Chapters ======
-        params = ['kolnovel']
+        params.append(inputSiteName())
+
         if (input('is novel exist? y/n:') == 'y'):
             novel = inputNovelName()
         else:
